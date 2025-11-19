@@ -6,14 +6,14 @@ pipeline {
     environment {
         APP_NAME = 'ivolve-webapp'
         DOCKER_REGISTRY = 'docker.io'
-        DOCKER_IMAGE = 'elkhawaga/ivolve-webapp'   
+        DOCKER_IMAGE = 'mennatullah2001/ivolve-webapp'   
         DOCKER_CREDENTIALS_ID = 'docker'
         GIT_CREDENTIALS_ID = 'github'
-        MANIFEST_REPO = 'https://github.com/mahmoudAbdelnaser99/CloudDevOpsProject.git'
+        MANIFEST_REPO = 'https://github.com/MennaHamouda/ivolve_project'
         IMAGE_TAG = "${BUILD_NUMBER}"
-        REPO_NAME = 'CloudDevOpsProject'
-        GIT_USERNAME = 'mahmoudAbdelnaser99'
-        EMAIL = 'mahmoudabdelnaser309@gmail.com'
+        REPO_NAME = 'ivolve_project'
+        GIT_USERNAME = 'mennahamouda'
+        EMAIL = 'mennahamouda2001@gmail.com'
         DEPLOYMENT = 'ivolve-deployment'
     }
 
