@@ -15,6 +15,6 @@ spec:
     spec:
       containers:
         - name: app
-          image: mennatullaj2001/ivolve-app:latest  
+          image: mennatullah2001/ivolve-app:latest  
           ports:
             - containerPort: 5000
