@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: graduation
+  namespace: ivolve
+  labels:
+    app: ivolve
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: ivolve
+  template:
+    metadata:
+      labels:
+        app: ivolve
+    spec:
+      containers:
+      - name: ivolve-nti
+        image: 
+        ports:
+        - containerPort: 5000
