@@ -7,7 +7,7 @@ spec:
   project: default
 
   source:
-    repoURL: https://github.com/MennaHamouda/ivolve_project/manefists
+    repoURL: https://github.com/MennaHamouda/ivolve_project/manifists
     path: argocd 
     targetRevision: main
 
