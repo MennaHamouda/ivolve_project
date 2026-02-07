@@ -1,1 +1,0 @@
-{"Modules":[{"Key":"","Source":"","Dir":"."},{"Key":"ecr","Source":"./modules/ecr","Dir":"modules/ecr"},{"Key":"eks","Source":"./modules/eks","Dir":"modules/eks"},{"Key":"endpoints","Source":"./modules/endpoints","Dir":"modules/endpoints"},{"Key":"roles","Source":"./modules/roles","Dir":"modules/roles"},{"Key":"vpc","Source":"./modules/vpc","Dir":"modules/vpc"}]}
