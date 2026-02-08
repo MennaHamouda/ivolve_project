@@ -144,5 +144,37 @@ terraform apply -auto-approve
 
 
 
+## 🚀 Build & Run Docker Image Locally
+
+You can build and test the iVolve application locally using Docker.
+
+### 1️⃣ Build the Docker Image
+Build the image from the Dockerfile in the current directory:
+
+```bash
+docker build -t ivolve-app:latest .
+2️⃣ Run the Container Locally
+Run the container and map port 5000 from the container to 5000 on your local machine:
+
+docker run -d -p 5000:5000 ivolve-app:latest
+3️⃣ Verify the Application
+Check that the application is running:
+
+curl http://localhost:5000
+
+```
+![docker build](images/11.png)
+![docker build](images/12.png)
+
+
+
+
+
+
+
+
+
+
+
 
 
