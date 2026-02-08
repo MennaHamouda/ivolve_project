@@ -255,7 +255,8 @@ Follow these steps to deploy your application using ArgoCD:
 kubectl create namespace argocd
 kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 ```
-<img width="1641" height="900" alt="Image" src="https://github.com/user-attachments/assets/ad002a16-edff-4a1c-9db7-ab2708933dcc" />
+
+![argocd](images/17.png)
 
 2. Access ArgoCD UI via LoadBalancer
 ```bash
@@ -276,14 +277,10 @@ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.pas
 **Create an ArgoCD Application**
 this will:
 - Track the manifests repo.
-- Deploy the resources defined in the manifests/base and overlays (e.g., prod).
+- Deploy the resources defined in the kubernetes manifests
 - Automatically sync the changes.
 
-<img width="1920" height="1031" alt="Image" src="https://github.com/user-attachments/assets/9a4e6de4-de19-49cd-9596-e595a84a35b0" />
-
-
 ----
-
 
 **Validate your object on the cluster**
 - check that all the pods is has Running state
@@ -295,14 +292,9 @@ kubectl get deployments -n ivolve
 kubectl get po -n ivolve 
 kubectl get svc -n ivolve
 
-Then apply kubernetes manifests
-```bash
-kubectl apply -f namespace.yml
-kubectl apply -f deployment.yml
-kubectl apply -f service.yml
+![argocd](images/18.png)
 
-```
-
+![argocd](images/19.png)
 
 
 
