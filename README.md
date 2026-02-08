@@ -300,7 +300,7 @@ Clone the manifests repository and check the folder structure:
 - Easy rollback and version tracking through image tags.
 
 
-## 7. Deploy with ArgoCD
+## 🌀 Deploy with ArgoCD
 
 Follow these steps to deploy your application using ArgoCD:
 
