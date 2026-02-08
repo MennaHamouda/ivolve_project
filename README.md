@@ -209,7 +209,28 @@ The application was containerized using Docker to ensure consistency across deve
 
 This setup allows the application to run consistently across all environments, simplifies deployment, and integrates directly with Kubernetes via EKS.
 
+## ☸️ Kubernetes Deployment
+1. Namespace
+- Created a dedicated namespace for isolating the application resources.
 
+2. Deployment 
+- Defined a Deployment manifest to manage the application's pods.
+- Ensures desired replicas of the application are always running.
+- Supports rolling updates for zero-downtime deployments.
+
+3. Service (LoadBalancer)
+
+- Configured a Service of type LoadBalancer to expose the application externally.
+
+- Automatically provisions an external AWS ELB to distribute traffic across pods.
+
+4. Scalability & Management
+
+- Supports scaling of pods by adjusting replicas in the Deployment.
+
+- All Kubernetes resources are version-controlled using YAML manifests.
+
+This setup ensures the application is highly available, load-balanced, and isolated within its own namespace on the cluster.
 
 
 
