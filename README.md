@@ -297,8 +297,10 @@ kubectl get svc -n ivolve
 
 ![argocd](images/19.png)
 
+**Access Application Across loadbalancer**
 
 
+![argocd](images/20.png)
 
 
 
