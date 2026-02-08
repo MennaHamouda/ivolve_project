@@ -357,5 +357,6 @@ kubectl get svc -n ivolve
 
 ![argocd](images/20.png)
 
+## flow of the project
 
-
+![flow](images/21.png)
