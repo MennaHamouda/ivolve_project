@@ -291,6 +291,7 @@ kubectl get all -n argocd
 kubectl get deployments -n ivolve
 kubectl get po -n ivolve 
 kubectl get svc -n ivolve
+```
 
 ![argocd](images/18.png)
 
