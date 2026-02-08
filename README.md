@@ -68,8 +68,6 @@ The infrastructure is built using **Terraform** and AWS resources:
 ### 10. ECR Repository
 - For storing Docker images for deployment in the cluster.
 
-![ECR Repository](images/7.png)
-
 ![Additional Infrastructure](images/9.png)
 
 ---
