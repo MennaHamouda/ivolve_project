@@ -245,6 +245,61 @@ aws eks update-kubeconfig --name <cluster-name> --region <region>
 
 
 ![docker build](images/16.png)
+
+
+
+
+## 🔄 CI/CD Workflow
+
+The project uses a fully automated DevOps workflow to build, test, and deploy the application to AWS EKS. The workflow is implemented using GitHub Actions and integrates Docker, Terraform, and Kubernetes.
+
+**Workflow Stages**
+1. Code Commit & Push
+- Any code change pushed to the repository triggers the workflow automatically.
+- Ensures every commit goes through the CI/CD pipeline. 
+
+2. Build Stage
+- Builds a Docker image for the application using the Dockerfile.
+
+3. Scan & Test Stage
+- Performs security scans and tests using Trivy on the Docker image.
+- Ensures vulnerabilities are detected before deployment.
+
+4. Push to ECR
+- Pushes the Docker image to AWS Elastic Container Registry (ECR).
+- Tags images using GitHub run numbers for traceability.
+
+5. Clone Manifests Repo
+Clone the manifests repository and check the folder structure:
+```bash
+.
+├── manifests
+    ├── ArgoCD
+    │   ├── application.yml
+    │   └── argocd-application.yaml
+    └── kubernetes
+        ├── deployment.yml
+        ├── namespace.yml
+        └── service.yml
+
+```
+- update the image-patch.yaml  with the new image 
+
+6. Notifications 
+
+- Slack notifications can be triggered to inform the team about pipeline success or failure.
+
+**Workflow Benefits**
+
+- Fully automated build-test-deploy cycle.
+
+- Secure and reproducible Docker images.
+
+- Scalable and fault-tolerant EKS deployment.
+
+- Easy rollback and version tracking through image tags.
+
+
 ## 7. Deploy with ArgoCD
 
 Follow these steps to deploy your application using ArgoCD:
