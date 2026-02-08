@@ -1,21 +1,23 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: argocd
+  name: argocd-self-manage
   namespace: argocd
 spec:
   project: default
+
   source:
     repoURL: https://github.com/MennaHamouda/ivolve_project
-    path: manifists/kuberntes
+    path: manifests/ArgoCD
     targetRevision: main
-    
+
   destination:
     server: https://kubernetes.default.svc
-    namespace: ivolve
+    namespace: argocd
+
   syncPolicy:
-    syncOptions:
-      - CreateNamespace=true
     automated:
       prune: true
       selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
