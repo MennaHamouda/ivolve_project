@@ -170,6 +170,40 @@ curl http://localhost:5000
 ![docker build](images/12.png)
 
 
+## 🐳 Docker & Build Tools
+
+The application was containerized using Docker to ensure consistency across development and deployment environments. The workflow included:
+
+1. Build & Dependencies
+
+- Install required Python packages using in the Dockerfile:
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+    Ensured all dependencies are defined in requirements.txt for reproducibility.
+
+2. Dockerfile Creation
+
+-  Created a Dockerfile defining the environment for the application.
+
+   Set up the working directory, copied the application code, installed dependencies, and exposed the necessary ports.
+
+3. Docker Image Build & Push
+
+- Build the Docker image :
+    ```bash
+    docker build -t <image_name>:<tag> .
+    ```
+
+    Tagged and pushed the image to the AWS ECR repository:
+    ```bash
+    docker tag <image_name>:<tag> <aws_account_id>.dkr.ecr.<region>.amazonaws.com/<repo_name>:<tag>
+    docker push <aws_account_id>.dkr.ecr.<region>.amazonaws.com/<repo_name>:<tag>
+    ```
+
+This setup allows the application to run consistently across all environments, simplifies deployment, and integrates directly with Kubernetes via EKS.
+
 
 
 
