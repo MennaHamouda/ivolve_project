@@ -232,11 +232,19 @@ This setup allows the application to run consistently across all environments, s
 
 This setup ensures the application is highly available, load-balanced, and isolated within its own namespace on the cluster.
 
+## ⚙️ Configure Kubectl for EKS
+
+After deploying your EKS cluster, you need to configure `kubectl` to connect and manage it.
+
+## Update Kubeconfig
+Replace `<cluster-name>` and `<region>` with your EKS cluster name and AWS region:
+
+```bash
+aws eks update-kubeconfig --name <cluster-name> --region <region>
+```
 
 
-
-
-
+![docker build](images/16.png)
 
 
 
