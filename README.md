@@ -4,74 +4,73 @@
 
 This project demonstrates a full Cloud DevOps pipeline for the iVolve application. It integrates modern DevOps practices to automate building, deploying, and monitoring the application.
 
-- Containerization: Docker.
-- Container Orchestration: Kubernetes (EKS).
-- Infrastructure as Code (IaC): Terraform.
-- CI/CD Pipeline: GitHub Actions.
-- Application Deployment Management: ArgoCD & Kustomize.
-- Security & Monitoring: Trivy scans for containers.
+- Containerization: Docker
+- Container Orchestration: Kubernetes (EKS)
+- Infrastructure as Code (IaC): Terraform
+- CI/CD Pipeline: GitHub Actions
+- Application Deployment Management: ArgoCD & Kustomize
+- Security & Monitoring: Trivy scans for containers
 
 The workflow automates building, scanning, pushing images, and deploying updated applications to the Kubernetes cluster.
 
 ---
 
 ## 🌐 Infrastructure Overview
+
 The infrastructure is built using **Terraform** and AWS resources:
 
-1. **VPC (Virtual Private Cloud)**
-   - CIDR block: `10.0.0.0/16`
-   - Public and private subnets across **two Availability Zones** for high availability.
-   - DNS support and hostnames enabled.
+### 1. VPC (Virtual Private Cloud)
+- CIDR block: `10.0.0.0/16`
+- Public and private subnets across **two Availability Zones** for high availability.
+- DNS support and hostnames enabled.
 
-![VPC Architecture](images/1)
+![VPC Architecture](images/1.png)
 
-2. **Subnets**
-   - **Public Subnets**: For NAT Gateway, Internet Gateway, and public-facing resources.
-   - **Private Subnets**: For EKS worker nodes and private resources.
+### 2. Subnets
+- **Public Subnets**: For NAT Gateway, Internet Gateway, and public-facing resources.
+- **Private Subnets**: For EKS worker nodes and private resources.
 
-![Subnets](images/2)
+![Subnets](images/2.png)
 
-3. **Internet Gateway (IGW)**
-   - Allows public access to resources in public subnets.
+### 3. Internet Gateway (IGW)
+- Allows public access to resources in public subnets.
 
-![Internet Gateway](images/3)
+![Internet Gateway](images/3.png)
 
-4. **NAT Gateway**
-   - Deployed in public subnets to provide internet access to private subnets.
+### 4. NAT Gateway
+- Deployed in public subnets to provide internet access to private subnets.
 
-![NAT Gateway](images/4)
+![NAT Gateway](images/4.png)
 
-5. **Route Tables**
-   - Public route table: Routes `0.0.0.0/0` traffic through IGW.
-   - Private route table: Routes `0.0.0.0/0` traffic through NAT Gateway.
+### 5. Route Tables
+- Public route table: Routes `0.0.0.0/0` traffic through IGW.
+- Private route table: Routes `0.0.0.0/0` traffic through NAT Gateway.
 
-6. **VPC Endpoints**
-   - ECR API endpoint for private communication between EKS nodes and ECR.
-   - Private DNS enabled.
+### 6. VPC Endpoints
+- ECR API endpoint for private communication between EKS nodes and ECR.
+- Private DNS enabled.
 
-7. **EKS Cluster**
-   - Managed Kubernetes cluster using **Amazon EKS**.
-   - **Two worker nodes**, deployed in separate private subnets.
-   - Worker nodes type: `t3.medium` (Free Tier eligible for testing).
+### 7. EKS Cluster
+- Managed Kubernetes cluster using **Amazon EKS**
+- **Two worker nodes**, deployed in separate private subnets
+- Worker nodes type: `t3.medium` (Free Tier eligible for testing)
 
-![EKS Cluster](images/5)
+![EKS Cluster](images/5.png)
 
-8. **node group**
+### 8. Node Group
+![Node Group](images/6.png)
 
-![node group](image/6)
+### 9. IAM Roles
+- Roles for EKS cluster and worker nodes to allow AWS resources access.
 
-8. **IAM Roles**
-   - Roles for EKS cluster and worker nodes to allow AWS resources access.
+![IAM Role](images/8.png)
 
-![IAM Role](image/8)
+### 10. ECR Repository
+- For storing Docker images for deployment in the cluster.
 
+![ECR Repository](images/7.png)
 
-9. **ECR Repository**
-   - For storing Docker images for deployment in the cluster.
-
-![ECR Repository](images/7)
-
-![Additional Infrastructure](images/screenshot9.png)
+![Additional Infrastructure](images/9.png)
 
 ---
 
@@ -95,6 +94,7 @@ variable "cidr_block"         # VPC CIDR block
 variable "public_cidr_blocks" # Public subnets CIDR
 variable "private_cidr_blocks"# Private subnets CIDR
 variable "default_route"      # Default route (usually 0.0.0.0/0)
+
 
 ## 🛠️ Setup & Deployment
 
@@ -141,7 +141,7 @@ terraform apply -auto-approve
 - VPC Endpoints
 
 
-![deploy infrastructure](image/10)
+![deploy infrastructure](images/10.png)
 
 
 
