@@ -8,7 +8,7 @@ spec:
 
   source:
     repoURL: https://github.com/MennaHamouda/ivolve_project
-    path: manifests/ArgoCD
+    path: manifists/ArgoCD
     targetRevision: main
 
   destination:
