@@ -245,6 +245,55 @@ aws eks update-kubeconfig --name <cluster-name> --region <region>
 
 
 ![docker build](images/16.png)
+## 7. Deploy with ArgoCD
+
+Follow these steps to deploy your application using ArgoCD:
+
+1. Install ArgoCD (if not installed)
+
+```bash
+kubectl create namespace argocd
+kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+```
+<img width="1641" height="900" alt="Image" src="https://github.com/user-attachments/assets/ad002a16-edff-4a1c-9db7-ab2708933dcc" />
+
+2. Access ArgoCD UI via LoadBalancer
+```bash
+kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "LoadBalancer"}}'
+kubectl get svc argocd-server -n argocd
+```
+
+3. Open to Brwoser
+```bash 
+https://<EXTERNAL-IP>
+```
+4. Use the admin Username 
+- Password
+```bash
+kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
+```
+
+**Create an ArgoCD Application**
+this will:
+- Track the manifests repo.
+- Deploy the resources defined in the manifests/base and overlays (e.g., prod).
+- Automatically sync the changes.
+
+<img width="1920" height="1031" alt="Image" src="https://github.com/user-attachments/assets/9a4e6de4-de19-49cd-9596-e595a84a35b0" />
+
+
+----
+
+
+**Validate your object on the cluster**
+- check that all the pods is has Running state
+- check that the lb is there and has external ip 
+```bash
+kubectl get ns
+kubectl get all -n argocd
+kubectl get deployments -n ivolve
+kubectl get po -n ivolve 
+kubectl get svc -n ivolve
 
 Then apply kubernetes manifests
 ```bash
@@ -253,6 +302,9 @@ kubectl apply -f deployment.yml
 kubectl apply -f service.yml
 
 ```
+
+
+
 
 
 
