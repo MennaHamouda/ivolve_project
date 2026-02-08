@@ -246,7 +246,13 @@ aws eks update-kubeconfig --name <cluster-name> --region <region>
 
 ![docker build](images/16.png)
 
+Then apply kubernetes manifests
+```bash
+kubectl apply -f namespace.yml
+kubectl apply -f deployment.yml
+kubectl apply -f service.yml
 
+```
 
 
 
