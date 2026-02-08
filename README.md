@@ -205,6 +205,8 @@ The application was containerized using Docker to ensure consistency across deve
 
 ![docker build](images/14.png)
 
+![docker build](images/15.png)
+
 This setup allows the application to run consistently across all environments, simplifies deployment, and integrates directly with Kubernetes via EKS.
 
 
