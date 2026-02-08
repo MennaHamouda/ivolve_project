@@ -201,8 +201,12 @@ The application was containerized using Docker to ensure consistency across deve
     docker tag <image_name>:<tag> <aws_account_id>.dkr.ecr.<region>.amazonaws.com/<repo_name>:<tag>
     docker push <aws_account_id>.dkr.ecr.<region>.amazonaws.com/<repo_name>:<tag>
     ```
+![docker build](images/13.png)
+![docker build](images/14.png)
 
 This setup allows the application to run consistently across all environments, simplifies deployment, and integrates directly with Kubernetes via EKS.
+
+
 
 
 
