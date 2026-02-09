@@ -53,7 +53,7 @@ jobs:
       - name: Checkout target repo
         uses: actions/checkout@v4
         with:
-          repository: Aliabdrabo/finalProject-manifests
+          repository: MennaHamouda/ivolve_project
           ref: main
           token: ${{ secrets.REPO_TOKEN }}
           path: repo
