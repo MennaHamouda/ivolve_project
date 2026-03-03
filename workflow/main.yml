@@ -12,9 +12,19 @@ env:
 jobs:
 
   terraform:
-    name: provide infrastructure
+    name: Provide Infrastructure
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
+
       - name: Terraform Init
         run: |
           cd terraform
@@ -31,9 +41,9 @@ jobs:
           terraform apply -auto-approve
 
   build-scan-push:
-    needs: terraform
     name: Build, Scan, and Push Docker Image
     runs-on: ubuntu-latest
+    needs: terraform
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -48,7 +58,7 @@ jobs:
       - name: Login to Amazon ECR
         uses: aws-actions/amazon-ecr-login@v2
 
-      - name: Build and Push Docker image
+      - name: Build and Push Docker Image
         uses: docker/build-push-action@v5
         with:
           context: ./App
@@ -65,8 +75,8 @@ jobs:
 
   update-deployment-file:
     name: Update deployment.yaml in another repo
-    needs: build-scan-push
     runs-on: ubuntu-latest
+    needs: build-scan-push
     steps:
       - name: Checkout target repo
         uses: actions/checkout@v4
@@ -81,7 +91,7 @@ jobs:
           cd repo/manifests/kubernetes
           sed -i "s|image:.*|image: ${{ env.AWS_ACCOUNT_ID }}.dkr.ecr.${{ env.AWS_REGION }}.amazonaws.com/${{ env.ECR_REPO }}:${{ env.IMAGE_TAG }}|" deployment.yml
 
-      - name: Commit and push changes
+      - name: Commit and Push Changes
         run: |
           cd repo/
           git config user.name "MennaHamouda"
