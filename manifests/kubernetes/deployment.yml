@@ -17,6 +17,6 @@ spec:
     spec:
       containers:
       - name: ivolve-nti
-        image: 140592727911.dkr.ecr.eu-central-1.amazonaws.com/finalproject-ivolve-repo:0.0.1
+        image: 1140592727911.dkr.ecr.eu-central-1.amazonaws.com/finalproject-ivolve-repo:latest
         ports:
         - containerPort: 5000

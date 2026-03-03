@@ -34,6 +34,10 @@ module "ecr" {
   project_name = var.project_name
 }
 
+resource "aws_ecr_repository" "repo" {
+  name         = "finalproject-ivolve-repo"
+  force_delete = true
+}
 
 module "endpoints" {
   source          = "./modules/endpoints"
