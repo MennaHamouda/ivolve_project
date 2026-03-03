@@ -12,7 +12,8 @@ env:
 jobs:
 
   terraform:
-    runs-on: ubuntu-latesty
+    name: provide infrastructure
+    runs-on: ubuntu-latest
     steps:
       - name: Terraform Init
         run: |
